@@ -79,7 +79,7 @@ func main() {
 	if err != nil {
 		fmt.Println(tag, "Config Error: ", err)
 		return
-	} else if asa == "EMP" {
+	} else if asa == "YOUR_APPSCRIPT_API_KEY" {
 		fmt.Println(tag, "Config Error: AppScript api code is missing")
 	}
 
