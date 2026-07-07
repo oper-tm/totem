@@ -1,0 +1,7 @@
+{
+  "asa": "AKfycbzu5fFEzWXMJECcBlKogx0HPiRHz9-BQTGDleFk1xe9mpFMm5x8M_HZzzu1H_gXeWk",
+  "batchSize": 5,
+  "downloadMode": "go",
+  "downloadPath": "downloads/",
+  "ffmpegPath": "ffmpeg.exe" 
+}
