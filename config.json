@@ -1,7 +1,10 @@
 {
-  "asa": "YOUR_APPSCRIPT_API_KEY",
+  "appScriptKey": "YOUR_APPSCRIPT_API_KEY",
   "batchSize": 5,
+  "maxSize": 10,
   "downloadMode": "go",
+  "lowLatency": false,
   "downloadPath": "downloads/",
+  "watchPort": 1819,
   "ffmpegPath": "ffmpeg.exe" 
 }
