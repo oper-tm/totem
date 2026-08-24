@@ -1,0 +1,10 @@
+{
+  "appScriptKey": "AKfycbzRh2hjvmgyHyReqPPNYJPneIOrmQTXcgZfLv62xZPqY4QH4Go6K66OyBs7xBuf3Pc",
+  "batchSize": 5,
+  "maxSize": 10,
+  "downloadMode": "go",
+  "lowLatency": false,
+  "downloadPath": "downloads/",
+  "watchPort": 1819,
+  "ffmpegPath": "ffmpeg.exe" 
+}
