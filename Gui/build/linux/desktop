@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=Totem
+Comment=Totem Media Player
+# The Exec line includes %u to pass the URL to the application
+Exec=/usr/local/bin/totem %u
+Terminal=false
+Type=Application
+Icon=totem
+Categories=Utility;
+StartupWMClass=totem
+
+ 

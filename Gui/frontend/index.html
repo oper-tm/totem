@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/wails.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+    <link rel="stylesheet" href="/src/index.css"/>
+    <title>Wails App</title>
+</head>
+<body>
+    <div id="main" class="c ch">
+        <div class="mextlist" id="extList_m">
+            <div class="mextItem" id="addPluginBtn_m" onclick="addPlugin()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="480" height="480">
+                    <path fill-rule="evenodd" d="M11 2L11 11L2 11L2 13L11 13L11 22L13 22L13 13L22 13L22 11L13 11L13 2Z" />
+                </svg>
+            </div>
+            <div class="mextItem" id="Mplbtn0" onclick="slplsel(0, 'normal')">
+                Normal
+            </div>
+        </div>
+        <div class="box">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l2.12-2.12a5 5 0 0 0-7.07-7.07L11.4 5.54"/><path d="M14 11a5 5 0 0 0-7.54-.54L4.34 12.58a5 5 0 0 0 7.07 7.07l1.18-1.18"/></svg>
+            <input type="text" id="u_inp" placeholder="Paste an M3U8 URL..." autocomplete="off" spellcheck="false">
+        </div>
+        <button class="button sabtn cancelbtn" id="a_btn" onclick="startAnalyze()">
+            Analyze
+        </button>
+        <div class="qualitySelect" id="qualitySelect"></div>
+        <div class="modeSelect" id="modeSelect"></div>
+        <div class="status" id="status"></div>
+        <br><br><br><br>
+        <div class="error" id="error"></div>
+    </div>
+    <div id="watch" class="c watch">
+        <div class="watchNavBtnback" id="watchNavBtnB"><div onclick="watchNavCrt()" class="watchNavBtn" id="watchNavBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="500" height="500">
+                <path d="M44.984375 12.96875C44.453125 12.984375 43.953125 13.203125 43.585938 13.585938L25 32.171875L6.414063 13.585938C6.035156 13.199219 5.519531 12.980469 4.976563 12.980469C4.164063 12.980469 3.433594 13.476563 3.128906 14.230469C2.820313 14.984375 3.003906 15.847656 3.585938 16.414063L23.585938 36.414063C24.367188 37.195313 25.632813 37.195313 26.414063 36.414063L46.414063 16.414063C47.007813 15.84375 47.195313 14.964844 46.875 14.203125C46.558594 13.441406 45.808594 12.953125 44.984375 12.96875Z"/>
+            </svg>
+        </div></div>
+        <video id="video" src="" controls muted></video>
+        <div class="notRun" id="notRun">
+            First, access the live stream or<br>
+            the desired file on the home page.
+        </div>
+    </div>
+    <div class="c setting" id="setting">
+        <label for="s_key">GoogleScript api key</label>
+        <div class="box">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l2.12-2.12a5 5 0 0 0-7.07-7.07L11.4 5.54"/><path d="M14 11a5 5 0 0 0-7.54-.54L4.34 12.58a5 5 0 0 0 7.07 7.07l1.18-1.18"/></svg>
+            <input type="text" oninput="nChange()" name="s_key" id="s_gsa" pattern="AKfycb.*" maxlength="128" placeholder="AKfycbxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" autocomplete="off" spellcheck="false">
+        </div><br>
+        <!-- <div class="flex">
+            <button class="button yezarekhamooshtar item" onclick="setupAsgPage(0)">Tutorial</button>
+            <button class="button item" onclick="setGsiInSetup()">Test</button>
+        </div> -->
+        <label for="s_bs">Batch size</label>
+        <div class="box">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l2.12-2.12a5 5 0 0 0-7.07-7.07L11.4 5.54"/><path d="M14 11a5 5 0 0 0-7.54-.54L4.34 12.58a5 5 0 0 0 7.07 7.07l1.18-1.18"/></svg>
+            <input type="number" oninput="nChange()" name="s_bs" id="s_bs" step="1" placeholder="Example: 5" autocomplete="off" spellcheck="false">
+        </div><br>
+        <label for="s_ms">Max size</label>
+        <div class="box">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l2.12-2.12a5 5 0 0 0-7.07-7.07L11.4 5.54"/><path d="M14 11a5 5 0 0 0-7.54-.54L4.34 12.58a5 5 0 0 0 7.07 7.07l1.18-1.18"/></svg>
+            <input type="number" oninput="nChange()" name="s_ms" id="s_ms" step="1" placeholder="Example: 10" autocomplete="off" spellcheck="false">
+        </div><br>
+        <label>Low latency</label>
+        <div class="chs">
+            <div class="ch" id="s_la_on" onclick="laChange(true); nChange()">
+                ON
+            </div>
+            <div class="ch" id="s_la_off" onclick="laChange(false); nChange()">
+                OFF
+            </div>
+        </div><br>
+        <button class="button" id="saveChangesBtn" onclick="saveChanges()">Save</button>
+    </div>
+    <div class="c ext" id="ext">
+        <div class="extbackmargin"></div>
+        <div class="extback"><div class="extlist" id="extList">
+            <div class="extItem" id="addPluginBtn" onclick="addPlugin()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="480" height="480">
+                    <path fill-rule="evenodd" d="M11 2L11 11L2 11L2 13L11 13L11 22L13 22L13 13L22 13L22 11L13 11L13 2Z" />
+                </svg>
+            </div>
+        </div></div>
+
+        <div class="content" id="extContent">
+            <div class="lp lploa" style="display: flex;" id="smaext">Select or add a plugin.</div>
+        </div>
+        <div class="lp" id="lp">Loading...</div>
+    </div>
+    <div class="c lib" id="lib"></div>
+    <div class="navback" id="navback"><div id="nav" class="nav">
+        <div class="navItem" id="ni_lib" onclick="show('lib')">
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bookmark-icon lucide-bookmark"><path d="M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z"/></svg>            
+            </div>
+            <a class="name">Library</a>
+        </div>
+        <div class="navItem" id="ni_ext" onclick="show('ext')">
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-puzzle-icon lucide-puzzle"><path d="M15.39 4.39a1 1 0 0 0 1.68-.474 2.5 2.5 0 1 1 3.014 3.015 1 1 0 0 0-.474 1.68l1.683 1.682a2.414 2.414 0 0 1 0 3.414L19.61 15.39a1 1 0 0 1-1.68-.474 2.5 2.5 0 1 0-3.014 3.015 1 1 0 0 1 .474 1.68l-1.683 1.682a2.414 2.414 0 0 1-3.414 0L8.61 19.61a1 1 0 0 0-1.68.474 2.5 2.5 0 1 1-3.014-3.015 1 1 0 0 0 .474-1.68l-1.683-1.682a2.414 2.414 0 0 1 0-3.414L4.39 8.61a1 1 0 0 1 1.68.474 2.5 2.5 0 1 0 3.014-3.015 1 1 0 0 1-.474-1.68l1.683-1.682a2.414 2.414 0 0 1 3.414 0z"/></svg>
+            </div>
+            <a class="name">Extensions</a>
+        </div>
+        <div class="navItem navActive" id="ni_main" onclick="show('main')">
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house-icon lucide-house"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+            </div>
+            <a class="name">Home</a>
+        </div>
+        <div class="navItem" id="ni_watch" onclick="show('watch')">
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-icon lucide-play"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>            
+            </div>
+            <a class="name">Watch</a>
+        </div>
+        <div class="navItem" id="ni_setting" onclick="show('setting')">
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings-icon lucide-settings"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></svg>            
+            </div>
+            <a class="name">Setting</a> 
+        </div>
+    </div></div>
+
+    <div class="dwpathboxback" id="dwpathboxw"><div class="dwpathbox">
+        <a class="filename" id="w_dwpb_filename">sdsdsdisjdi.m3u8</a>
+        <div class="code-box cbblack sbdw">
+            <code id="w_dwpb_code">Totem - Google Apps Script Relay Setup</code>
+            <button id="w_dwpb_copy" onclick="">Copy</button>
+        </div>
+        <a class="dwpbinfo">Copy and paste the link into your browser and download it. (This is local download)</a>
+        <div class="flex">
+            <button class="button yezarekhamooshtar" onclick="closeDownloadLocalMenu()">Close</button>
+        </div>
+    </div></div>
+
+    <div class="dwpathboxback" id="dwpathboxm"><div class="dwpathbox" id="dwpathbox">
+        <a class="filename" id="m_dwpb_filename">sdsdsdisjdi.m3u8</a>
+        <div class="code-box cbblack sbdw">
+            <code id="m_dwpb_code">Totem - Google Apps Script Relay Setup</code>
+            <button onclick="" id="m_dwpb_copy">Copy</button>
+        </div>
+        <a class="dwpbinfo">Copy and paste the link into your browser and download it. (This is local download)<br>or Click on open path</a>
+        <div class="flex">
+            <button class="button yezarekhamooshtar item" onclick="closeDownloadLocalMenu()">Close</button>
+            <button class="button item" id="m_dwpb_opbtn" onclick="">Open path</button>
+        </div>
+    </div></div>
+
+    <div class="setupback" id="setupback">
+        <div class="setup" id="setupasg0">
+            <div class="up">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="512" height="512">
+                    <path d="M16.003906 14.0625L16.003906 18.265625L21.992188 18.265625C21.210938 20.8125 19.082031 22.636719 16.003906 22.636719C12.339844 22.636719 9.367188 19.664063 9.367188 16C9.367188 12.335938 12.335938 9.363281 16.003906 9.363281C17.652344 9.363281 19.15625 9.96875 20.316406 10.964844L23.410156 7.867188C21.457031 6.085938 18.855469 5 16.003906 5C9.925781 5 5 9.925781 5 16C5 22.074219 9.925781 27 16.003906 27C25.238281 27 27.277344 18.363281 26.371094 14.078125Z"/>
+                </svg>
+            </div>
+            <div class="info">
+                <div class="mainTitle mainInfo">Google appscript setup</div>
+                <div class="mainDesc mainInfo">This app requires a Google Apps Script to access online streams.</div>
+            </div>
+            <div class="downgrad"><div class="down">
+                <button class="button" onclick="setupAsgPage(1)">Start Setup</button>
+            </div></div>
+        </div>
+        <div class="setup" id="setupasg1">
+            <div class="up">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="512" height="512">
+                    <path d="M16.003906 14.0625L16.003906 18.265625L21.992188 18.265625C21.210938 20.8125 19.082031 22.636719 16.003906 22.636719C12.339844 22.636719 9.367188 19.664063 9.367188 16C9.367188 12.335938 12.335938 9.363281 16.003906 9.363281C17.652344 9.363281 19.15625 9.96875 20.316406 10.964844L23.410156 7.867188C21.457031 6.085938 18.855469 5 16.003906 5C9.925781 5 5 9.925781 5 16C5 22.074219 9.925781 27 16.003906 27C25.238281 27 27.277344 18.363281 26.371094 14.078125Z"/>
+                </svg>
+            </div>
+            <div class="info">
+                <div class="mainTitle mainInfo">Create a Google Apps Script</div>
+                <div class="mainDesc mainInfo">Estimated time: 2 minutes<br><br>
+                    Join our Telegram channel to get a free Apps Script and setup guide.
+                    @totemgsa
+                </div>
+            </div>
+            <div class="downgrad"><div class="down">
+                <button class="button yezarekhamooshtar" onclick="setupAsgPage(3)">I already have one</button>
+                <button class="button" onclick="setupAsgPage(2)">Open Tutorial</button>
+            </div></div>
+        </div> 
+        <div class="setup" id="setupasg2">
+            <div class="up">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="512" height="512">
+                    <path d="M16.003906 14.0625L16.003906 18.265625L21.992188 18.265625C21.210938 20.8125 19.082031 22.636719 16.003906 22.636719C12.339844 22.636719 9.367188 19.664063 9.367188 16C9.367188 12.335938 12.335938 9.363281 16.003906 9.363281C17.652344 9.363281 19.15625 9.96875 20.316406 10.964844L23.410156 7.867188C21.457031 6.085938 18.855469 5 16.003906 5C9.925781 5 5 9.925781 5 16C5 22.074219 9.925781 27 16.003906 27C25.238281 27 27.277344 18.363281 26.371094 14.078125Z"/>
+                </svg>
+            </div>
+            <div class="info">
+                <div class="mainTitle mainInfo">Create a Google Apps Script</div>
+                <div class="mainDesc mainInfo">Estimated time: 2 minutes</div>
+                <div class="mainDesc mainInfo">1. Open script.new or script.google.com</div>
+                <div class="code-box">
+                    <code id="codeText">https://script.google.com</code>
+                    <button onclick="copyCode(2)">Copy</button>
+                </div><br>
+                <img class="ttimg" src="tt1.png" alt=""><br>
+
+                <div class="mainDesc mainInfo">2. Click on "New Project".</div>
+                <img class="ttimg" src="tt2.png" alt=""><br>
+
+                <div class="mainDesc mainInfo">3. Copy this code.</div>
+                <div class="code-box">
+                    <code id="codeText">Totem - Google Apps Script Relay Setup</code>
+                    <button onclick="copyCode(1)">Copy</button>
+                </div><br>
+
+                <div class="mainDesc mainInfo">4. Paste the code into the project you created.</div>
+                <img class="ttimg" src="tt3.png" alt=""><br>
+
+                <div class="mainDesc mainInfo">5. Click the "deploy" button at the top right of the page.</div>
+                <img class="ttimg" src="tt4.png" alt=""><br>
+
+                <div class="mainDesc mainInfo">6. Click on "New deployment".</div>
+                <img class="ttimg" src="tt5.png" alt=""><br>
+
+                <div class="mainDesc mainInfo">7. On the page that opens, click on the gear icon.</div>
+                <img class="ttimg" src="tt6.png" alt=""><br>
+
+                <div class="mainDesc mainInfo">8. Click on "Web app".</div>
+                <img class="ttimg" src="tt7.png" alt=""><br>
+
+                <div class="mainDesc mainInfo">9. Set the "Who has access" to "Anyone".</div>
+                <img class="ttimg" src="tt8.png" alt=""><br>
+
+                <div class="mainDesc mainInfo">10. Click on "Deploy".</div>
+                <img class="ttimg" src="tt9.png" alt=""><br>
+
+                <div class="mainDesc mainInfo">If you don't see this page, ignore these steps and skip to step 15..<br>11. Click on "Authorise access".</div>
+                <img class="ttimg" src="tt10.png" alt=""><br>
+
+                <div class="mainDesc mainInfo">12. Click on "Advanced".</div>
+                <img class="ttimg" src="tt11.png" alt=""><br>
+
+                <div class="mainDesc mainInfo">13. Click on "Go to Untitled projected (unsafe)".<br>Note: This app is for Google itself, but an unknown bug is causing this security warning that doesn't matter.</div>
+                <img class="ttimg" src="tt12.png" alt=""><br>
+
+                <div class="mainDesc mainInfo">14. Click on "Continue".</div>
+                <img class="ttimg" src="tt13.png" alt=""><br>
+
+                <div class="mainDesc mainInfo">15. Now your AppScript key is ready, copy it and set it in the next step.</div>
+                <img class="ttimg" src="tt14.png" alt=""><br>
+            </div>
+            <br><br><br>
+            <br><br><br>
+            <br><br><br>
+            <div class="downgrad">
+                 <div class="down">
+                    <button class="button yezarekhamooshtar" >Open Video Tutorial</button>
+                    <button class="button" onclick="OpenURL(`script.google.com`, true, true)">Open Appscript</button>
+                    <div class="flex">
+                        <button class="button yezarekhamooshtar item" onclick="setupAsgPage(1)">Back</button>
+                        <button class="button item" onclick="setupAsgPage(3)">Next</button>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+        <div class="setup" id="setupasg3">
+            <div class="up">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="512" height="512">
+                    <path d="M16.003906 14.0625L16.003906 18.265625L21.992188 18.265625C21.210938 20.8125 19.082031 22.636719 16.003906 22.636719C12.339844 22.636719 9.367188 19.664063 9.367188 16C9.367188 12.335938 12.335938 9.363281 16.003906 9.363281C17.652344 9.363281 19.15625 9.96875 20.316406 10.964844L23.410156 7.867188C21.457031 6.085938 18.855469 5 16.003906 5C9.925781 5 5 9.925781 5 16C5 22.074219 9.925781 27 16.003906 27C25.238281 27 27.277344 18.363281 26.371094 14.078125Z"/>
+                </svg>
+            </div>
+            <div class="info">
+                <div class="mainTitle mainInfo">Google Apps Script Key Test</div>
+                <div class="mainDesc mainInfo">Enter the key of your desired app script and click the test button.</div><br>
+                <div class="box">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l2.12-2.12a5 5 0 0 0-7.07-7.07L11.4 5.54"/><path d="M14 11a5 5 0 0 0-7.54-.54L4.34 12.58a5 5 0 0 0 7.07 7.07l1.18-1.18"/></svg>
+                    <input type="text" id="t_gsa" pattern="AKfycb.*" maxlength="128" placeholder="AKfycbxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" autocomplete="off" spellcheck="false">
+                </div>
+                <button class="button" onclick="testGsi()">Test</button>
+                <a class="gsistatus" id="gsiStatusTxt"></a>
+            </div>
+            <div class="downgrad"><div class="down">
+                <div class="flex">
+                    <button class="button yezarekhamooshtar item" onclick="setupAsgPage(2)">Back</button>
+                    <button class="button item" onclick="setGsiInSetup()">Save</button>
+                </div>
+            </div></div>
+        </div> 
+    </div>
+    <div class="boot" id="boot">
+        <img src="/totemwhite.png" alt="" class="mainlogo">
+        <div class="bottom">
+            <a class="loading">Loading</a>
+            <a class="ver">1.0.0 BETA</a>
+        </div>
+    </div>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

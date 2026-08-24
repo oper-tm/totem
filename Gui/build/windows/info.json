@@ -1,0 +1,15 @@
+{
+	"fixed": {
+		"file_version": "1.0.0"
+	},
+	"info": {
+		"0000": {
+			"ProductVersion": "1.0.0",
+			"CompanyName": "Totem",
+			"FileDescription": "Totem Media Player",
+			"LegalCopyright": "(c) 2026, Totem",
+			"ProductName": "Totem",
+			"Comments": "Totem Media Player"
+		}
+	}
+}
