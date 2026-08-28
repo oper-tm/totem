@@ -58,7 +58,7 @@ async function changel1Slide(now, past = null, tr = true) {
         
     }
 }
-function operR(num) {
+function openR(num) {
     if (num == 1) {
         window.location.href = "https://github.com/oper-tm/totem/releases/latest/download/Totem-Android.apk";
     } else {
