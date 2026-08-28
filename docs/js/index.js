@@ -58,3 +58,10 @@ async function changel1Slide(now, past = null, tr = true) {
         
     }
 }
+function operR(num) {
+    if (num == 1) {
+        window.location.href = "https://github.com/oper-tm/totem/releases/latest/download/Totem-Android.apk";
+    } else {
+        window.location.href = "https://github.com/oper-tm/totem/releases/latest/download/Totem-Windows-x64.exe";
+    }
+}
