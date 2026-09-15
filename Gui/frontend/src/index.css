@@ -51,7 +51,7 @@
 {
     box-sizing: border-box;
     text-decoration: none;
-    font-family: inter;
+    font-family: pp;
     transition: var(--transition);
 }
 *::-webkit-scrollbar
@@ -598,6 +598,7 @@ body
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding-bottom: 40px;
 }
 .ext .content .itemA
 {
@@ -701,6 +702,7 @@ body
     display: flex;
     flex-wrap: nowrap;
 }
+
 .ext > *,
 .extback > *,
 .extlist > * {

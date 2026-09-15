@@ -1,4 +1,8 @@
 @font-face {
-    font-family: 'inter';
-    src: url('/Inter-Medium.ttf') format('truetype');
+    font-family: 'pp';
+    /* src: url('/Inter-Medium.ttf') format('truetype'); */
+    /* src: url('/Jersey10-Regular.ttf') format('truetype'); */
+    /* src: url('/PressStart2P-Regular.ttf') format('truetype'); */
+    /* src: url('/Bungee-Regular.ttf') format('truetype'); */
+    src: url('/Jersey25-Regular.ttf') format('truetype');
 }

@@ -74,6 +74,8 @@ var (
 	m3u8PathUrl string
 	m3u8Url     string
 	outputFile  string
+
+	deHe map[string]interface{} = nil
 )
 
 type Segment struct {
@@ -98,8 +100,17 @@ type Config struct {
 var cfg Config
 
 func getM3U8(murl, mname string) (error, error) {
+	qhs := ""
+	if deHe != nil {
+		data, err := json.Marshal(deHe)
+		if err == nil {
+			str := string(data)
+			qhs = "&h=" + url.QueryEscape(str)
+		}
+	}
+
 	resp, err := http.Get(
-		"https://script.google.com/macros/s/" + asa + "/exec?type=0&url=" + url.QueryEscape(murl),
+		"https://script.google.com/macros/s/" + asa + "/exec?type=0&url=" + url.QueryEscape(murl) + qhs,
 	)
 	if err != nil {
 		return errors.New("gm:1"), err
@@ -130,6 +141,14 @@ func getTs(tsUrl, tsName string, tssegNum int, wg *sync.WaitGroup) []byte {
 	if downloadMode == "go" && bType != "watch" {
 		defer wg.Done()
 	}
+	qhs := ""
+	if deHe != nil {
+		data, err := json.Marshal(deHe)
+		if err == nil {
+			str := string(data)
+			qhs = "&h=" + url.QueryEscape(str)
+		}
+	}
 	tsOk := false
 	var tsTry int
 
@@ -143,8 +162,9 @@ func getTs(tsUrl, tsName string, tssegNum int, wg *sync.WaitGroup) []byte {
 		if tsTry > 1 {
 			logger.Println(tag, "[ "+strconv.Itoa(tssegNum)+" / "+strconv.Itoa(finalM3u8TsNum)+" ] Retrying... (try "+strconv.Itoa(tsTry)+")")
 		}
+		logger.Println("https://script.google.com/macros/s/" + asa + "/exec?type=1&url=" + url.QueryEscape(tsUrl) + qhs)
 		resp, err := http.Get(
-			"https://script.google.com/macros/s/" + asa + "/exec?type=1&url=" + url.QueryEscape(tsUrl),
+			"https://script.google.com/macros/s/" + asa + "/exec?type=1&url=" + url.QueryEscape(tsUrl) + qhs,
 		)
 
 		if err != nil {

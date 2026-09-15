@@ -330,7 +330,7 @@ ADDED from [androidx.core:core:1.9.0] C:\Users\Signal\.gradle\caches\9.2.1\trans
 		ADDED from [androidx.core:core:1.9.0] C:\Users\Signal\.gradle\caches\9.2.1\transforms\73c870d790afa7d7ec2c3497162da36f\workspace\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
 	android:name
 		ADDED from [androidx.core:core:1.9.0] C:\Users\Signal\.gradle\caches\9.2.1\transforms\73c870d790afa7d7ec2c3497162da36f\workspace\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
-permission#com.wails.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+permission#com.totem.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.9.0] C:\Users\Signal\.gradle\caches\9.2.1\transforms\73c870d790afa7d7ec2c3497162da36f\workspace\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
 	android:protectionLevel
 		ADDED from [androidx.core:core:1.9.0] C:\Users\Signal\.gradle\caches\9.2.1\transforms\73c870d790afa7d7ec2c3497162da36f\workspace\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
@@ -340,7 +340,7 @@ uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.9.0] C:\Users\Signal\.gradle\caches\9.2.1\transforms\73c870d790afa7d7ec2c3497162da36f\workspace\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
 	android:name
 		ADDED from [androidx.core:core:1.9.0] C:\Users\Signal\.gradle\caches\9.2.1\transforms\73c870d790afa7d7ec2c3497162da36f\workspace\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
-uses-permission#com.wails.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+uses-permission#com.totem.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.9.0] C:\Users\Signal\.gradle\caches\9.2.1\transforms\73c870d790afa7d7ec2c3497162da36f\workspace\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
 	android:name
 		ADDED from [androidx.core:core:1.9.0] C:\Users\Signal\.gradle\caches\9.2.1\transforms\73c870d790afa7d7ec2c3497162da36f\workspace\transformed\core-1.9.0\AndroidManifest.xml:26:22-94

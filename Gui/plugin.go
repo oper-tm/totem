@@ -105,6 +105,10 @@ func registerHostFunctions(vm *goja.Runtime, host *goja.Object, pluginName strin
 		app.Event.Emit("fuinp", url)
 	})
 
+	host.Set("setHeader", func(h map[string]interface{}) {
+		deHe = h
+	})
+
 	host.Set("getUrl", func(url, h string) string {
 		err1, err2, data := getFile(url, plName, h, false)
 

@@ -1,6 +1,6 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.wails.app"
+3    package="com.totem.app"
 4    android:versionCode="1"
 5    android:versionName="1.0" >
 6
@@ -64,12 +64,12 @@
 35
 36    <permission
 36-->[androidx.core:core:1.9.0] C:\Users\Signal\.gradle\caches\9.2.1\transforms\73c870d790afa7d7ec2c3497162da36f\workspace\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
-37        android:name="com.wails.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+37        android:name="com.totem.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
 37-->[androidx.core:core:1.9.0] C:\Users\Signal\.gradle\caches\9.2.1\transforms\73c870d790afa7d7ec2c3497162da36f\workspace\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
 38        android:protectionLevel="signature" />
 38-->[androidx.core:core:1.9.0] C:\Users\Signal\.gradle\caches\9.2.1\transforms\73c870d790afa7d7ec2c3497162da36f\workspace\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
 39
-40    <uses-permission android:name="com.wails.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+40    <uses-permission android:name="com.totem.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 40-->[androidx.core:core:1.9.0] C:\Users\Signal\.gradle\caches\9.2.1\transforms\73c870d790afa7d7ec2c3497162da36f\workspace\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
 40-->[androidx.core:core:1.9.0] C:\Users\Signal\.gradle\caches\9.2.1\transforms\73c870d790afa7d7ec2c3497162da36f\workspace\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
 41
@@ -115,7 +115,7 @@
 63        <provider
 64            android:name="androidx.core.content.FileProvider"
 64-->C:\Users\Signal\Desktop\m3u8dw\totem\build\android\app\src\main\AndroidManifest.xml:48:13-62
-65            android:authorities="com.wails.app.fileprovider"
+65            android:authorities="com.totem.app.fileprovider"
 65-->C:\Users\Signal\Desktop\m3u8dw\totem\build\android\app\src\main\AndroidManifest.xml:49:13-64
 66            android:exported="false"
 66-->C:\Users\Signal\Desktop\m3u8dw\totem\build\android\app\src\main\AndroidManifest.xml:50:13-37
@@ -142,7 +142,7 @@
 78-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Signal\.gradle\caches\9.2.1\transforms\4f3963907b177616d34cb40151385d2b\workspace\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
 79            android:name="androidx.startup.InitializationProvider"
 79-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Signal\.gradle\caches\9.2.1\transforms\4f3963907b177616d34cb40151385d2b\workspace\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
-80            android:authorities="com.wails.app.androidx-startup"
+80            android:authorities="com.totem.app.androidx-startup"
 80-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Signal\.gradle\caches\9.2.1\transforms\4f3963907b177616d34cb40151385d2b\workspace\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
 81            android:exported="false" >
 81-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Signal\.gradle\caches\9.2.1\transforms\4f3963907b177616d34cb40151385d2b\workspace\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
